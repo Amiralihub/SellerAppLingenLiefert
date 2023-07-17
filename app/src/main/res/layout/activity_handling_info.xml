@@ -13,6 +13,12 @@
         android:padding="16dp">
 
         <CheckBox
+            android:id="@+id/chkOption"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Flüssig" />
+
+        <CheckBox
             android:id="@+id/chkOption1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
