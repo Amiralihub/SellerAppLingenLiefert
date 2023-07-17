@@ -131,7 +131,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void switchToScannerFragment() {
         getSupportFragmentManager().beginTransaction()
-                .replace(android.R.id.framelayout, new ScannerFragment()) // Ersetze android.R.id.content durch deine Container-ID
+                .replace(android.R.id.content, new ScannerFragment()) // Ersetze android.R.id.content durch deine Container-ID
                 .commit();
     }
 
