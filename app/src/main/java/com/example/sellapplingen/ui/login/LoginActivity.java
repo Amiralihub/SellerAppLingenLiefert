@@ -20,10 +20,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.sellapplingen.QRCodeScanner;
 import com.example.sellapplingen.R;
-import com.example.sellapplingen.ui.login.LoginViewModel;
-import com.example.sellapplingen.ui.login.LoginViewModelFactory;
+import com.example.sellapplingen.ScannerFragment;
 import com.example.sellapplingen.databinding.ActivityLoginBinding;
 
 public class LoginActivity extends AppCompatActivity {
@@ -75,15 +73,8 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 if (loginResult.getSuccess() != null) {
                     updateUiWithUser(loginResult.getSuccess());
-                    isLoggedIn = true;
-
                 }
                 setResult(Activity.RESULT_OK);
-
-                // Complete and destroy login activity once successful
-                if (isLoggedIn) {
-                    finish();
-                }
             }
         });
 
@@ -124,20 +115,24 @@ public class LoginActivity extends AppCompatActivity {
                 loadingProgressBar.setVisibility(View.VISIBLE);
                 loginViewModel.login(usernameEditText.getText().toString(),
                         passwordEditText.getText().toString());
+                switchToScannerFragment();
             }
         });
     }
 
     private void updateUiWithUser(LoggedInUserView model) {
         String welcome = getString(R.string.welcome) + model.getDisplayName();
-        // TODO: Initiate successful logged-in experience
+        // TODO: Erfolgreiche Anmeldeerfahrung initiieren
         Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
 
-        // Set the login status to true
+        // Setze den Login-Status auf true
         setLoggedIn(true);
+    }
 
-        Intent intent = new Intent(LoginActivity.this, QRCodeScanner.class);
-        startActivity(intent);
+    private void switchToScannerFragment() {
+        getSupportFragmentManager().beginTransaction()
+                .replace(android.R.id.framelayout, new ScannerFragment()) // Ersetze android.R.id.content durch deine Container-ID
+                .commit();
     }
 
     private void showLoginFailed(@StringRes Integer errorString) {
@@ -145,7 +140,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void setLoggedIn(boolean isLoggedIn) {
-        // Save the login status in shared preferences or any other way you prefer
+        // Speichere den Login-Status in den Shared Preferences oder einer anderen bevorzugten Methode
         this.isLoggedIn = isLoggedIn;
     }
 }

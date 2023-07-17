@@ -1,3 +1,4 @@
+package com.example.sellapplingen;
 import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -26,6 +27,29 @@ public class ScannerFragment extends Fragment {
 
     public ScannerFragment() {
         // Required empty public constructor
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_scanner, container, false);
+
+        btnScan = view.findViewById(R.id.btnScan);
+        btnScan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                scanCode();
+            }
+        });
+
+        barLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if (result.getResultCode() == getActivity().RESULT_OK && result.getData() != null) {
+                        String contents = result.getData().getStringExtra("SCAN_RESULT");
+                        showResultDialog(contents);
+                    }
+                });
+
+        return view;
     }
 
     private void scanCode() {
@@ -73,28 +97,5 @@ public class ScannerFragment extends Fragment {
                 dialogInterface.dismiss();
             }
         }).show();
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_scanner, container, false);
-
-        btnScan = view.findViewById(R.id.btnScan);
-        btnScan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                scanCode();
-            }
-        });
-
-        barLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
-                result -> {
-                    if (result.getResultCode() == getActivity().RESULT_OK && result.getData() != null) {
-                        String contents = result.getData().getStringExtra("SCAN_RESULT");
-                        showResultDialog(contents);
-                    }
-                });
-
-        return view;
     }
 }
