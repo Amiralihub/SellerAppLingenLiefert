@@ -76,6 +76,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (loginResult.getSuccess() != null) {
                     updateUiWithUser(loginResult.getSuccess());
                     isLoggedIn = true;
+
                 }
                 setResult(Activity.RESULT_OK);
 

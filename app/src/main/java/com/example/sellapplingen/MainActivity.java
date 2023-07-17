@@ -16,7 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.sellapplingen.R;
-import com.example.sellapplingen.ScannerFragment;
+import com.example.sellapplingen.QRCodeScanner;
 import com.example.sellapplingen.SettingFragment;
 import com.example.sellapplingen.databinding.ActivitymainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
