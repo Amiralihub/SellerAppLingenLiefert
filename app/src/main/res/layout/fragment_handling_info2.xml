@@ -71,8 +71,8 @@
         android:layout_marginTop="8dp"
         android:layout_marginBottom="4dp"
         android:backgroundTint="#D2D2D5"
-        android:drawablePadding="10dp"
         android:drawableLeft="@drawable/baseline_check_24"
+        android:drawablePadding="10dp"
         android:padding="20dp"
         android:text="Bestätigen"
         android:textColor="@color/black" />
@@ -85,8 +85,8 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="16dp"
         android:backgroundTint="#D2D2D5"
-        android:drawablePadding="10dp"
         android:drawableLeft="@drawable/baseline_arrow_back_24"
+        android:drawablePadding="10dp"
         android:padding="20dp"
         android:text="Zurück"
         android:textColor="@color/black" />
