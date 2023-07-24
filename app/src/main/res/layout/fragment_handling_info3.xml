@@ -1,77 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".HandlingInfo">
-
-    <!-- Zurück Button -->
-    <Button
-        android:id="@+id/zxing_back_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="Zurück"
-        android:backgroundTint="#F43672"
-        android:textColor="#FFFFFF"
-        android:drawableLeft="@drawable/baseline_arrow_back_24"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="16dp" />
+    android:padding="16dp">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <CheckBox
-            android:id="@+id/chkOption"
+        <!-- Zurück Button -->
+        <Button
+            android:id="@+id/backButton2"
+            android:layout_width="170dp"
+            android:layout_height="75dp"
+            android:layout_gravity="left"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="#D2D2D5"
+            android:drawableLeft="@drawable/baseline_arrow_back_24"
+            android:drawablePadding="10dp"
+            android:padding="20dp"
+            android:text="Zurück"
+            android:textColor="@color/black" />
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="S" />
+            android:orientation="vertical"
+            android:padding="16dp">
 
-        <CheckBox
-            android:id="@+id/chkOption1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="M" />
-
-        <CheckBox
-            android:id="@+id/chkOption2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="L" />
-
-        <CheckBox
-            android:id="@+id/chkOption3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="XL" />
-
-        <!-- Kalender -->
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/dateInputLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/dateEditText"
+            <CheckBox
+                android:id="@+id/chkOption"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:clickable="true"
-                android:focusable="false"
-                android:hint="Lieferdatum wählen" />
+                android:text="S" />
 
-            <CalendarView
-                android:layout_width="wrap_content"
+            <CheckBox
+                android:id="@+id/chkOption1"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/calendarView"
-                android:layout_weight="1" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:text="M" />
+
+            <CheckBox
+                android:id="@+id/chkOption2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="L" />
+
+            <CheckBox
+                android:id="@+id/chkOption3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="XL" />
+
+            <!-- Kalender -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/dateInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/dateEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:hint="Lieferdatum wählen" />
+
+                <CalendarView
+                    android:id="@+id/calendarView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/confirmButton3"
+            android:layout_width="170dp"
+            android:layout_height="75dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="4dp"
+            android:backgroundTint="#D2D2D5"
+            android:drawableLeft="@drawable/baseline_check_24"
+            android:drawablePadding="10dp"
+            android:padding="20dp"
+            android:text="Bestätigen"
+            android:textColor="@color/black" />
 
     </LinearLayout>
-
-</LinearLayout>
+</ScrollView>
