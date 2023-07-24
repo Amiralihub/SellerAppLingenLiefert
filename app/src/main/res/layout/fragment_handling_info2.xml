@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,11 +11,12 @@
         android:id="@+id/employeeName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Mitarbeiter-Kürzel:"
-        android:textSize="18sp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="100dp"
-        android:layout_marginBottom="8dp" />
+        android:layout_marginBottom="8dp"
+        android:hint="Mitarbeiter-Kürzel:"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
 
 
     <LinearLayout
@@ -29,66 +29,67 @@
             android:id="@+id/packages"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Anzahl der Pakete: 0"
-            android:textSize="20sp"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="4dp" />
+            android:layout_marginBottom="4dp"
+            android:text="Anzahl der Pakete: 0"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
-        <!-- Minus Button -->
+
         <Button
             android:id="@+id/minusButton"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:text="-"
             android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="4dp"
             android:layout_marginBottom="4dp"
-            android:backgroundTint="#FF5722"
-        android:textColor="@color/black"
-        />
+            android:backgroundTint="#FFD1D1D3"
+            android:text="-"
+            android:textColor="@color/black" />
 
-        <!-- Plus Button -->
+
         <Button
             android:id="@+id/plusButton"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:text="+"
             android:layout_marginStart="4dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="4dp"
-            android:backgroundTint="#0FFF5722"
-        android:textColor="@color/black"
-        />
+            android:backgroundTint="#FFD1D1D3"
+            android:text="+"
+            android:textColor="@color/black" />
     </LinearLayout>
 
-    <!-- Bestätigen Button -->
-    <Button
-        android:id="@+id/confirmButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/baseline_check_24"
-        android:backgroundTint="#3F51B5"
-    android:padding="20dp"
-    android:text="Bestätigen"
-    android:textColor="#FFFFFF"
-    android:drawableLeft="@drawable/baseline_check_24"
-    android:layout_gravity="center_horizontal"
-    android:layout_marginTop="8dp"
-    android:layout_marginBottom="4dp" />
 
-    <!-- Zurück Button -->
     <Button
-        android:id="@+id/zuruckButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/confirmButton2"
+        android:layout_width="170dp"
+        android:layout_height="75dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="4dp"
+        android:backgroundTint="#D2D2D5"
+        android:drawablePadding="10dp"
+        android:drawableLeft="@drawable/baseline_check_24"
+        android:padding="20dp"
+        android:text="Bestätigen"
+        android:textColor="@color/black" />
+
+
+    <Button
+        android:id="@+id/backButton1"
+        android:layout_width="170dp"
+        android:layout_height="75dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="#D2D2D5"
+        android:drawablePadding="10dp"
+        android:drawableLeft="@drawable/baseline_arrow_back_24"
         android:padding="20dp"
         android:text="Zurück"
-        android:backgroundTint="#F43672"
-    android:textColor="#FFFFFF"
-    android:drawableLeft="@drawable/baseline_arrow_back_24"
-    android:layout_gravity="center_horizontal"
-    android:layout_marginBottom="16dp" />
+        android:textColor="@color/black" />
+
 
 </LinearLayout>

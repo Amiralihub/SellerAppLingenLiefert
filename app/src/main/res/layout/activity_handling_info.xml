@@ -37,10 +37,18 @@
             android:text="Glas" />
 
         <Button
-            android:id="@+id/btnShowInfo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Abschicken" />
+            android:id="@+id/confirmButton"
+            android:layout_width="170dp"
+            android:layout_height="75dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="4dp"
+            android:backgroundTint="#D2D2D5"
+            android:drawablePadding="10dp"
+            android:drawableLeft="@drawable/baseline_check_24"
+            android:padding="20dp"
+            android:text="Bestätigen"
+            android:textColor="@color/black" />
 
     </LinearLayout>
 
