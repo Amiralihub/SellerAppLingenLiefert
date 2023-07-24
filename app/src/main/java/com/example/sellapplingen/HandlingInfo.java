@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 public class HandlingInfo extends AppCompatActivity {
 
+    //TODO: Handling Info muss als Fragment implementiert werden
     private StringBuilder selectedInfo = new StringBuilder();
 
     @Override
