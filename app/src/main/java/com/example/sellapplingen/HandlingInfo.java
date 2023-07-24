@@ -14,9 +14,19 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Toast;
 
+
+//TODO: Handling Info muss als Fragment implementiert werden
+//TODO: Ausgewählte Optionen müssen in einem dazugehörigen Obkjekt als Strings gespeichert werden
+//TODO XML (Alaa): Es muss eine weitere Option "Keine besondere Eigenschaft" geben, falls keine Option zutrifft
+//TODO XML (Alaa): Ein weiterer backTofragmentButton (mein ImageButton kann verwendet werden), der oben links platziert ist
+//TODO: backTofragmentButton leitet den Nutzer auf dem QRCOdeScanner weiter
+//TODO: confirmButton leitet den Nutzer auf HandlingInfo2 weiter
+
+
+
 public class HandlingInfo extends AppCompatActivity {
 
-    //TODO: Handling Info muss als Fragment implementiert werden
+
     private StringBuilder selectedInfo = new StringBuilder();
 
     @Override
@@ -27,7 +37,7 @@ public class HandlingInfo extends AppCompatActivity {
         CheckBox chkOption1 = findViewById(R.id.chkOption1);
         CheckBox chkOption2 = findViewById(R.id.chkOption2);
         CheckBox chkOption3 = findViewById(R.id.chkOption3);
-        Button btnShowInfo = findViewById(R.id.btnShowInfo);
+        Button confirmButton = findViewById(R.id.confirmButton);
 
         chkOption1.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
@@ -47,7 +57,7 @@ public class HandlingInfo extends AppCompatActivity {
             }
         });
 
-        btnShowInfo.setOnClickListener(v -> {
+        confirmButton.setOnClickListener(v -> {
             String info = selectedInfo.toString();
             if (!info.isEmpty()) {
                 info = info.substring(0, info.length() - 4); // Remove the last " && "

@@ -8,11 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link HandlingInfo2Fragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
+//TODO XML (Alaa): Ein weiterer backTofragmentButton (mein ImageButton kann verwendet werden), der oben links platziert ist
+//TODO: backTofragmentButton leitet den Nutzer auf dem QRCOdeScanner
+//TODO: confirmButton leitet den Nutzer auf HandlingInfo3 weiter
+//TODO: backButton leitet den Nutzer auf HandlingInfo weiter
+//TODO: Funktion zum erhöhen und zum reduzieren von den Anzahl der Paketen
+//TODO: Die Informationen in einem zugehörigen Objekt speichern
+
 public class HandlingInfo2Fragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match

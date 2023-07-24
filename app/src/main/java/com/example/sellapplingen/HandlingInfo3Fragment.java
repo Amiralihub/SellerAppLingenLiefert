@@ -8,11 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link HandlingInfo3Fragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+//TODO XML (Alaa): Ein weiterer backTofragmentButton (mein ImageButton kann verwendet werden), der oben links platziert ist
+//TODO XML (Alaa): Kalenderansicht auf dem aktuellen Datum aktualisieren (Ist das +berhaupt durch XML machbar?)
+//TODO: backTofragmentButton leitet den Nutzer auf dem QRCOdeScanner
+//TODO: confirmButton leitet den Nutzer auf die Zusammenfassung-Ansicht weiter
+//TODO: backButton leitet den Nutzer auf HandlingInfo2 weiter
+//TODO: Die Informationen in einem zugehörigen Objekt speichern
+
+
 public class HandlingInfo3Fragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
