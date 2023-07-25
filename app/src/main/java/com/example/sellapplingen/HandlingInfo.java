@@ -17,8 +17,6 @@ import android.widget.Toast;
 
 //TODO: Handling Info muss als Fragment implementiert werden
 //TODO: Ausgewählte Optionen müssen in einem dazugehörigen Obkjekt als Strings gespeichert werden
-//TODO XML (Alaa): Es muss eine weitere Option "Keine besondere Eigenschaft" geben, falls keine Option zutrifft #ERLEDIGT
-//TODO XML (Alaa): Ein weiterer backTofragmentButton (mein ImageButton kann verwendet werden), der oben links platziert ist #Erledigt
 //TODO: backTofragmentButton leitet den Nutzer auf dem QRCOdeScanner weiter
 //TODO: confirmButton leitet den Nutzer auf HandlingInfo2 weiter
 

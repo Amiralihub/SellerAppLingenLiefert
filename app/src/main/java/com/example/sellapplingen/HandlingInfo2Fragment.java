@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-//TODO XML (Alaa): Ein weiterer backTofragmentButton (mein ImageButton kann verwendet werden), der oben links platziert ist #ERLEDIGT
 //TODO: backTofragmentButton leitet den Nutzer auf dem QRCOdeScanner
 //TODO: confirmButton leitet den Nutzer auf HandlingInfo3 weiter
 //TODO: backButton leitet den Nutzer auf HandlingInfo weiter
