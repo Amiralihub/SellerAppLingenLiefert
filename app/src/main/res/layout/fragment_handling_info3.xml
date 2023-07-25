@@ -53,7 +53,7 @@
                 android:layout_height="wrap_content"
                 android:text="XL" />
 
-            <!-- Kalender -->
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/dateInputLayout"
                 android:layout_width="match_parent"
