@@ -1,14 +1,49 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SettingFragment">
 
-    <!-- TODO: Word Elemente aus den ScreenShots von iOs-->
+    <!-- RelativeLayout für den Button "Zurück" -->
+    <RelativeLayout
+        android:id="@+id/backButtonLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- ImageButton "Zurück" -->
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_arrow_back_24"
+            android:background="@android:color/darker_gray"
+            android:contentDescription="Back Button" />
+
+        <!-- TextView "Zurück" -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/backButton"
+            android:text="Zurück"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"
+            android:layout_marginStart="8dp" />
+    </RelativeLayout>
+
+    <!-- TextView -->
     <TextView
+        android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:text="@string/hello_blank_fragment"
+        android:gravity="center"
+        android:textSize="24sp"
+        app:layout_constraintTop_toBottomOf="@id/backButtonLayout"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
