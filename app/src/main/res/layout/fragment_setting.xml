@@ -6,6 +6,7 @@
     android:padding="8dp">
 
     <!-- Ich habe den Layout bearbeitet. Jetzt kannst du es bearbeiten -->
+    <!-- In diesem Fragment brauchst du keinen Zurück Button -->
 
     <LinearLayout
         android:layout_width="match_parent"
