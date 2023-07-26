@@ -2,28 +2,40 @@ package com.example.sellapplingen;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
-import androidx.annotation.Nullable;
+
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
+
+
 
 public class MainActivity extends AppCompatActivity {
 
-    private LoginManager loginManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activitymain);
+        setContentView(R.layout.activity_main);
 
         // Verwende den ApplicationContext für den LoginManager
-        loginManager = LoginManager.getInstance(getApplicationContext());
+        LoginManager loginManager = LoginManager.getInstance(getApplicationContext());
 
         if (!loginManager.isLoggedIn()) {
             // Wenn der Benutzer nicht eingeloggt ist, starte die LoginActivity
             startActivity(new Intent(this, LoginActivity.class));
             finish(); // Beende die MainActivity
+        } else {
+            // Der Benutzer ist eingeloggt, zeige den ScannerFragment an
+            showScannerFragment();
         }
-
-        // Hier kannst du den Rest des Codes für die MainActivity hinzufügen
     }
+
+    private void showScannerFragment() {
+        Log.d("MainActivity", "showScannerFragment() called");
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.frame_layout, new ScannerFragment());
+        transaction.commit();
+    }
+
 }

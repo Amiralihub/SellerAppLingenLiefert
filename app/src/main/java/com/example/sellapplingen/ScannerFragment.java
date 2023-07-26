@@ -1,6 +1,6 @@
 package com.example.sellapplingen;
 import android.Manifest;
-import android.content.DialogInterface;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -22,7 +22,6 @@ public class ScannerFragment extends Fragment {
 
     private static final int CAMERA_PERMISSION_REQUEST_CODE = 100;
 
-    private Button btnScan;
     private ActivityResultLauncher<Intent> barLauncher;
 
     public ScannerFragment() {
@@ -33,17 +32,12 @@ public class ScannerFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_scanner, container, false);
 
-        btnScan = view.findViewById(R.id.btnScan);
-        btnScan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                scanCode();
-            }
-        });
+        Button btnScan = view.findViewById(R.id.btnScan);
+        btnScan.setOnClickListener(v -> scanCode());
 
         barLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
                 result -> {
-                    if (result.getResultCode() == getActivity().RESULT_OK && result.getData() != null) {
+                    if (result.getResultCode() == Activity.RESULT_OK && result.getData() != null) {
                         String contents = result.getData().getStringExtra("SCAN_RESULT");
                         showResultDialog(contents);
                     }
@@ -70,13 +64,10 @@ public class ScannerFragment extends Fragment {
             new AlertDialog.Builder(requireContext())
                     .setTitle("Kameraerlaubnis benötigt")
                     .setMessage("Die App benötigt Zugriff auf die Kamera, um QR-Codes zu scannen.")
-                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            // Fordere die Kameraerlaubnis an
-                            ActivityCompat.requestPermissions(requireActivity(),
-                                    new String[]{Manifest.permission.CAMERA}, CAMERA_PERMISSION_REQUEST_CODE);
-                        }
+                    .setPositiveButton("OK", (dialog, which) -> {
+                        // Fordere die Kameraerlaubnis an
+                        ActivityCompat.requestPermissions(requireActivity(),
+                                new String[]{Manifest.permission.CAMERA}, CAMERA_PERMISSION_REQUEST_CODE);
                     })
                     .setNegativeButton("Abbrechen", null)
                     .show();
@@ -91,11 +82,6 @@ public class ScannerFragment extends Fragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
         builder.setTitle("Ergebnis");
         builder.setMessage(result);
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                dialogInterface.dismiss();
-            }
-        }).show();
+        builder.setPositiveButton("OK", (dialogInterface, i) -> dialogInterface.dismiss()).show();
     }
 }
