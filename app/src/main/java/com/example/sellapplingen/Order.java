@@ -1,24 +1,6 @@
 package com.example.sellapplingen;
 
-//TODO Alaa: Intialisiere die Klasse Order basierend auf die App von Jan
-//TODO Alaa: Bau die Getter und Setter auf
-//TODO Alaa: Erstelle einen leeren und einen vollen Konstruktor
-//TODO Alaa: Erstelle eine toString() Methode
 
-/*public class Order {
-    private String token;
-    private String timestamp;
-    private String firstName;
-    private String lastName;
-    private String street;
-    private String houseNumber;
-    private String zip;
-    private String city;
-    private String numberPackage;
-    private String packageSize;
-    private String handlingInfo;
-    private String deliveryDate;
-} */
 public class Order {
     private String token;
     private String timestamp;
@@ -34,11 +16,11 @@ public class Order {
     private String handlingInfo;
     private String deliveryDate;
 
-    // Leerer Konstruktor
+
     public Order() {
     }
 
-    // Voller Konstruktor
+
     public Order(String token, String timestamp, String employeeName, String firstName, String lastName,
                            String street, String houseNumber, String zip, String city, String numberPackage,
                            String packageSize, String handlingInfo, String deliveryDate) {
@@ -57,7 +39,7 @@ public class Order {
         this.deliveryDate = deliveryDate;
     }
 
-    // Getter und Setter für alle Attribute
+
     public String getToken() {
         return token;
     }

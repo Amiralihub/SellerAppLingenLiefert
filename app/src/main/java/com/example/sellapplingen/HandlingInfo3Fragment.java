@@ -8,8 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-//TODO XML (Alaa): Ein weiterer backTofragmentButton (mein ImageButton kann verwendet werden), der oben links platziert ist #ERLEDIGT
-//TODO XML (Alaa): Kalenderansicht auf dem aktuellen Datum aktualisieren (Ist das +berhaupt durch XML machbar?) #DER MUSS IN DER CODE,IN XML GEHT NICHT
+
 //TODO: backTofragmentButton leitet den Nutzer auf dem QRCOdeScanner
 //TODO: confirmButton leitet den Nutzer auf die Zusammenfassung-Ansicht weiter
 //TODO: backButton leitet den Nutzer auf HandlingInfo2 weiter
