@@ -1,4 +1,5 @@
 package com.example.sellapplingen;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,44 +15,34 @@ import com.example.sellapplingen.SettingFragment;
 import com.example.sellapplingen.WelcomeFragment;
 import com.example.sellapplingen.databinding.ActivitymainBinding;
 
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 public class MainActivity extends AppCompatActivity {
-    ActivitymainBinding binding;
+
+    private Button loginButton;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivitymainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-        binding.bottomNavigationView.setVisibility(View.GONE);
+        setContentView(R.layout.activity_main2);
 
-        if (getIntent().getBooleanExtra("OPEN_SCANNER_FRAGMENT", false)) {
-            replaceFragment(new ScannerFragment());
-        } else {
-            replaceFragment(new WelcomeFragment());
-        }
-        binding.bottomNavigationView.setOnItemSelectedListener(item ->{
-            switch (item.getItemId()){
-                case R.id.code:
-                    replaceFragment(new ScannerFragment());
-                    break;
-                case R.id.settings:
-                    replaceFragment(new SettingFragment());
-                    break;
+        loginButton = findViewById(R.id.button2);
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openLoginActivity();
             }
-            return true;
         });
     }
 
-    private void replaceFragment(Fragment fragment){
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.frame_layout, fragment);
-        fragmentTransaction.commit();
-    }
-
-    public static void openScannerFragment(Context context) {
-        Intent intent = new Intent(context, MainActivity.class);
-        intent.putExtra("OPEN_SCANNER_FRAGMENT", true);
-        context.startActivity(intent);
+    private void openLoginActivity() {
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
     }
 }
