@@ -1,0 +1,11 @@
+<resources>
+    <!-- Other styles definitions... -->
+
+    <!-- ZxingCaptureTheme -->
+    <style name="ZxingCaptureTheme" parent="@style/Theme.AppCompat">
+        <!-- Customize the theme attributes as needed -->
+        <!-- For example, change the colors, fonts, etc. -->
+    </style>
+
+    <!-- Other styles definitions... -->
+</resources>

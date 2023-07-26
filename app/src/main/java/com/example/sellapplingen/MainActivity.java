@@ -3,15 +3,12 @@ package com.example.sellapplingen;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
-
-
 public class MainActivity extends AppCompatActivity {
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,10 +29,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showScannerFragment() {
-        Log.d("MainActivity", "showScannerFragment() called");
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frame_layout, new ScannerFragment());
         transaction.commit();
     }
-
 }
