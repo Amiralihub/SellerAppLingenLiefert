@@ -1,6 +1,5 @@
 package com.example.sellapplingen;
 
-
 import android.content.Context;
 import android.content.SharedPreferences;
 
@@ -10,14 +9,25 @@ public class LoginManager {
     private static final String KEY_USERNAME = "username";
     private static final String KEY_PASSWORD = "password";
 
+    private static LoginManager instance;
     private String validUsername;
     private String validPassword;
     private Context context;
 
-    public LoginManager(Context context, String username, String password) {
+    // Privater Konstruktor, um die Instanz nur einmal zu erstellen
+    private LoginManager(Context context) {
         this.context = context;
-        this.validUsername = username;
-        this.validPassword = password;
+        // Die "richtigen" Login-Daten festlegen
+        validUsername = "test";
+        validPassword = "test";
+    }
+
+    // Statische Methode zum Erhalten der einzigen Instanz des LoginManagers
+    public static LoginManager getInstance(Context context) {
+        if (instance == null) {
+            instance = new LoginManager(context.getApplicationContext());
+        }
+        return instance;
     }
 
     public boolean isLoginValid(String enteredUsername, String enteredPassword) {
