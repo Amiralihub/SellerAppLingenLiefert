@@ -9,18 +9,18 @@ import android.widget.Button;
 
 import com.example.sellapplingen.ui.login.LoginActivity;
 
-public class Main2Activity extends AppCompatActivity {
+public class WelcomeActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.activity_welcome);
 
         Button loginButton1 = findViewById(R.id.button2);
         loginButton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Main2Activity.this, LoginActivity.class);
+                Intent intent = new Intent(WelcomeActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
         });
