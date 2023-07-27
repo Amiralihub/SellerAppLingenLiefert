@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HandlingInfo">
+    tools:context=".HandlingInfo"
+    style="@style/Screen">
 
     <Button
         android:id="@+id/backToFragmentButton"
