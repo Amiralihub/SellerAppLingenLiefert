@@ -1,18 +1,14 @@
 package com.example.sellapplingen;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
-
-
-
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 
 //TODO: Handling Info muss als Fragment implementiert werden
@@ -23,8 +19,9 @@ import android.widget.Toast;
 
 
 public class HandlingInfo extends AppCompatActivity {
-
-
+    private Fragment currentFragment;
+    CheckBox chkOption1, chkOption2, chkOption3, chkOption4;
+    Button confirmButton, backToScannerFragmentButton;
     private StringBuilder selectedInfo = new StringBuilder();
 
     @Override
@@ -32,10 +29,11 @@ public class HandlingInfo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_handling_info);
 
-        CheckBox chkOption1 = findViewById(R.id.chkOption1);
-        CheckBox chkOption2 = findViewById(R.id.chkOption2);
-        CheckBox chkOption3 = findViewById(R.id.chkOption3);
-        Button confirmButton = findViewById(R.id.confirmButton);
+        chkOption1 = findViewById(R.id.chkOption1);
+        chkOption2 = findViewById(R.id.chkOption2);
+        chkOption3 = findViewById(R.id.chkOption3);
+        confirmButton = findViewById(R.id.confirmButton);
+        backToScannerFragmentButton = findViewById(R.id.backToScannerFragmentButton);
 
         chkOption1.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
@@ -55,6 +53,13 @@ public class HandlingInfo extends AppCompatActivity {
             }
         });
 
+        chkOption4.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                selectedInfo.append("Keine besondere Eigenschaft");
+            }
+        });
+
+        //Anpassung notwendig, weil es jetzt eine vierte Option gibt
         confirmButton.setOnClickListener(v -> {
             String info = selectedInfo.toString();
             if (!info.isEmpty()) {
@@ -64,6 +69,16 @@ public class HandlingInfo extends AppCompatActivity {
                 showToast("No option was selected yet.");
             }
         });
+
+        backToScannerFragmentButton.setOnClickListener(v -> {
+            showScannerFragment();
+        });
+    }
+
+    private void showScannerFragment() {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.frame_layout, new ScannerFragment());
+        transaction.commit();
     }
 
     private void showToast(String message) {

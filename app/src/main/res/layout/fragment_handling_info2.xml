@@ -10,7 +10,7 @@
     tools:context=".HandlingInfo2Fragment">
 
     <Button
-        android:id="@+id/backToFragmentButton"
+        android:id="@+id/backToScannerFragmentButton2"
         style="@style/Text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
