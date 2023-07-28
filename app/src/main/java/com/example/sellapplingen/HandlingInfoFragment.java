@@ -64,6 +64,7 @@ public class HandlingInfoFragment extends Fragment {
             String info = selectedInfo.toString();
             if (!info.isEmpty()) {
                 info = info.substring(0, info.length() - 4); // Remove the last " && "
+                showHandlingInfo2();
                 showToast(info);
             } else {
                 showToast("No option was selected yet.");
@@ -80,6 +81,12 @@ public class HandlingInfoFragment extends Fragment {
     private void showScannerFragment() {
         FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frame_layout, new ScannerFragment());
+        transaction.commit();
+    }
+
+    private void showHandlingInfo2() {
+        FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.frame_layout, new HandlingInfo2Fragment());
         transaction.commit();
     }
 
