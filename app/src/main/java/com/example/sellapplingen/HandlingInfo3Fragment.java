@@ -13,9 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 
-//TODO: backTofragmentButton leitet den Nutzer auf dem QRCOdeScanner
-//TODO: confirmButton leitet den Nutzer auf die Zusammenfassung-Ansicht weiter
-//TODO: backButton leitet den Nutzer auf HandlingInfo2 weiter
+
 //TODO: Die Informationen in einem zugehörigen Objekt speichern
 
 

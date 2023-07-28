@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-//TODO XML (Alaa): Die Ansicht in der Datei fragment_setting.xml wie iOS realisieren
 
 public class SettingFragment extends Fragment {
 

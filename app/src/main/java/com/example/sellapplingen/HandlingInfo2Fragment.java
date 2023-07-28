@@ -12,9 +12,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 
-//TODO: backTofragmentButton leitet den Nutzer auf dem QRCOdeScanner
-//TODO: confirmButton leitet den Nutzer auf HandlingInfo3 weiter
-//TODO: backButton leitet den Nutzer auf HandlingInfo weiter
+
 //TODO: Funktion zum erhöhen und zum reduzieren von den Anzahl der Paketen
 //TODO: Die Informationen in einem zugehörigen Objekt speichern
 
