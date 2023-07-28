@@ -1,28 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Screen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".LoginActivity"
-    style="@style/Screen">
+    tools:context=".LoginActivity">
 
     <EditText
         android:id="@+id/editTextUsername"
+        style="@style/Text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Benutzername" />
 
     <EditText
         android:id="@+id/editTextPassword"
+        style="@style/Text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:hint="Passwort" />
+        android:hint="Passwort"
+        android:inputType="textPassword" />
 
     <Button
         android:id="@+id/buttonLogin"
+        style="@style/Text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Einloggen" />

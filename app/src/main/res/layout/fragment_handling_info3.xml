@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/Screen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="16dp"
-    style="@style/Screen">
+    android:padding="16dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,6 +13,7 @@
 
         <Button
             android:id="@+id/backToFragmentButton"
+            style="@style/Text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -21,7 +22,6 @@
             android:drawablePadding="10dp"
             android:padding="10dp"
             android:text="QR-Code Scanner"
-            android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -30,36 +30,41 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="8dp">
+
             <CheckBox
                 android:id="@+id/chkOption"
+                style="@style/Text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="S" />
 
             <CheckBox
                 android:id="@+id/chkOption1"
+                style="@style/Text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="M" />
 
             <CheckBox
                 android:id="@+id/chkOption2"
+                style="@style/Text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="L" />
 
             <CheckBox
                 android:id="@+id/chkOption3"
+                style="@style/Text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="XL" />
-
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/dateInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp">
+
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/dateEditText"
                     android:layout_width="match_parent"
@@ -70,15 +75,18 @@
 
                 <CalendarView
                     android:id="@+id/calendarView"
+                    style="@style/Text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
+
             </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
 
         <Button
             android:id="@+id/confirmButton3"
+            style="@style/Text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -88,12 +96,11 @@
             android:drawableLeft="@drawable/baseline_check_24"
             android:drawablePadding="6dp"
             android:padding="8dp"
-            android:text="Bestätigen"
-            android:textColor="@color/black" />
-
+            android:text="Bestätigen" />
 
         <Button
             android:id="@+id/backButton2"
+            style="@style/Text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -103,8 +110,8 @@
             android:drawableLeft="@drawable/baseline_arrow_back_24"
             android:drawablePadding="6dp"
             android:padding="8dp"
-            android:text="Zurück"
-            android:textColor="@color/black" />
+            android:text="Zurück" />
 
     </LinearLayout>
+
 </ScrollView>

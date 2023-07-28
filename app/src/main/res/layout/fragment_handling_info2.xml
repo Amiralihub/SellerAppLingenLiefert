@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Screen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context=".HandlingInfo2Fragment"
-    style="@style/Screen">
+    android:padding="16dp"
+    tools:context=".HandlingInfo2Fragment">
 
     <Button
         android:id="@+id/backToFragmentButton"
+        style="@style/Text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -18,21 +20,18 @@
         android:drawablePadding="10dp"
         android:padding="10dp"
         android:text="QR-Code Scanner"
-        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/employeeName"
+        style="@style/Text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="100dp"
         android:layout_marginBottom="8dp"
-        android:hint="MitarbeiterKürzel: Optional"
-        android:textColor="@color/black"
-        android:textSize="18sp" />
-
+        android:hint="MitarbeiterKürzel: Optional" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -42,17 +41,16 @@
 
         <TextView
             android:id="@+id/packages"
+            style="@style/Text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="4dp"
-            android:text="Anzahl der Pakete: 0"
-            android:textColor="@color/black"
-            android:textSize="20sp" />
-
+            android:text="Anzahl der Pakete: 0" />
 
         <Button
             android:id="@+id/minusButton"
+            style="@style/Text"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="8dp"
@@ -60,12 +58,11 @@
             android:layout_marginEnd="4dp"
             android:layout_marginBottom="4dp"
             android:backgroundTint="#FFD1D1D3"
-            android:text="-"
-            android:textColor="@color/black" />
-
+            android:text="-" />
 
         <Button
             android:id="@+id/plusButton"
+            style="@style/Text"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="4dp"
@@ -73,13 +70,13 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="4dp"
             android:backgroundTint="#FFD1D1D3"
-            android:text="+"
-            android:textColor="@color/black" />
-    </LinearLayout>
+            android:text="+" />
 
+    </LinearLayout>
 
     <Button
         android:id="@+id/confirmButton2"
+        style="@style/Text"
         android:layout_width="170dp"
         android:layout_height="75dp"
         android:layout_gravity="center_horizontal"
@@ -89,12 +86,11 @@
         android:drawableLeft="@drawable/baseline_check_24"
         android:drawablePadding="10dp"
         android:padding="20dp"
-        android:text="Bestätigen"
-        android:textColor="@color/black" />
-
+        android:text="Bestätigen" />
 
     <Button
         android:id="@+id/backButton1"
+        style="@style/Text"
         android:layout_width="170dp"
         android:layout_height="75dp"
         android:layout_gravity="center_horizontal"
@@ -103,9 +99,6 @@
         android:drawableLeft="@drawable/baseline_arrow_back_24"
         android:drawablePadding="10dp"
         android:padding="20dp"
-        android:text="Zurück"
-        android:textColor="@color/black" />
-
-
+        android:text="Zurück" />
 
 </LinearLayout>
