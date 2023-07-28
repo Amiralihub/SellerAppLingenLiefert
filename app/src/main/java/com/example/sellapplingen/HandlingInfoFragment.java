@@ -1,39 +1,40 @@
 package com.example.sellapplingen;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+public class HandlingInfoFragment extends Fragment {
 
-//TODO: Handling Info muss als Fragment implementiert werden
-//TODO: Ausgewählte Optionen müssen in einem dazugehörigen Obkjekt als Strings gespeichert werden
-//TODO: backTofragmentButton leitet den Nutzer auf dem QRCOdeScanner weiter
-//TODO: confirmButton leitet den Nutzer auf HandlingInfo2 weiter
-
-
-
-public class HandlingInfo extends AppCompatActivity {
-    private Fragment currentFragment;
     CheckBox chkOption1, chkOption2, chkOption3, chkOption4;
     Button confirmButton, backToScannerFragmentButton;
     private StringBuilder selectedInfo = new StringBuilder();
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_handling_info);
+    public HandlingInfoFragment() {
+        // Required empty public constructor
+    }
 
-        chkOption1 = findViewById(R.id.chkOption1);
-        chkOption2 = findViewById(R.id.chkOption2);
-        chkOption3 = findViewById(R.id.chkOption3);
-        confirmButton = findViewById(R.id.confirmButton);
-        backToScannerFragmentButton = findViewById(R.id.backToScannerFragmentButton);
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_handling_info, container, false);
+
+        chkOption1 = view.findViewById(R.id.chkOption1);
+        chkOption2 = view.findViewById(R.id.chkOption2);
+        chkOption3 = view.findViewById(R.id.chkOption3);
+        chkOption4 = view.findViewById(R.id.chkOption4); // Assuming you have this checkbox in your layout
+        confirmButton = view.findViewById(R.id.confirmButton);
+        backToScannerFragmentButton = view.findViewById(R.id.backToScannerFragmentButton);
 
         chkOption1.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
@@ -59,7 +60,6 @@ public class HandlingInfo extends AppCompatActivity {
             }
         });
 
-        //Anpassung notwendig, weil es jetzt eine vierte Option gibt
         confirmButton.setOnClickListener(v -> {
             String info = selectedInfo.toString();
             if (!info.isEmpty()) {
@@ -73,15 +73,17 @@ public class HandlingInfo extends AppCompatActivity {
         backToScannerFragmentButton.setOnClickListener(v -> {
             showScannerFragment();
         });
+
+        return view;
     }
 
     private void showScannerFragment() {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frame_layout, new ScannerFragment());
         transaction.commit();
     }
 
     private void showToast(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show();
     }
 }
