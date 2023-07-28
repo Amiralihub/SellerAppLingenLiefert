@@ -25,11 +25,13 @@
         <!-- LoginActivity -->
         <activity
             android:name=".LoginActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.SellAppLingen.NoActionBar"/>
 
         <!-- MainActivity -->
         <activity
             android:name=".MainActivity"
+            android:theme="@style/Theme.SellAppLingen.NoActionBar"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
