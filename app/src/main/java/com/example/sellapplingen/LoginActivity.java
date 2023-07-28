@@ -30,6 +30,10 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(v -> login());
     }
 
+    //vergleich mit createAndSaveRecipient aus CodeFragment
+    //enteredUsername & enteredPassword als parameter
+    //LogInManager objekt
+    //set userame auf enteredUsername
     private void login() {
         String enteredUsername = usernameEditText.getText().toString();
         String enteredPassword = passwordEditText.getText().toString();
