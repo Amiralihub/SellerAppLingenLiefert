@@ -26,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:backgroundTint="#D2D2D5"
+            android:backgroundTint="@color/lavender"
             android:text="Adresse bearbeiten"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -37,7 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:backgroundTint="#D2D2D5"
+            android:backgroundTint="@color/lavender"
             android:text="Öffnungszeiten bearbeiten"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -48,7 +48,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:backgroundTint="#D2D2D5"
+            android:backgroundTint="@color/lavender"
             android:text="Telefonnummer bearbeiten"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -59,7 +59,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:backgroundTint="#D2D2D5"
+            android:backgroundTint="@color/lavender"
             android:text="Geschäfts-E-mail bearbeiten"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -70,7 +70,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:backgroundTint="#D2D2D5"
+            android:backgroundTint="@color/lavender"
             android:text="Verantwortliche fürs Geschäft bearbeiten"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -81,7 +81,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:backgroundTint="#D2D2D5"
+            android:backgroundTint="@color/lavender"
             android:text="Abmelden"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
