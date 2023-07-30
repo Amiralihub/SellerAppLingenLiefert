@@ -30,28 +30,28 @@
             android:padding="8dp">
 
             <CheckBox
-                android:id="@+id/chkOption"
+                android:id="@+id/heavyOption"
                 style="@style/Text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="S" />
 
             <CheckBox
-                android:id="@+id/chkOption1"
+                android:id="@+id/fluentOption"
                 style="@style/Text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="M" />
 
             <CheckBox
-                android:id="@+id/chkOption2"
+                android:id="@+id/fragileOption"
                 style="@style/Text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="L" />
 
             <CheckBox
-                android:id="@+id/chkOption3"
+                android:id="@+id/glasOption"
                 style="@style/Text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

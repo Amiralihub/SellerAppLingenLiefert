@@ -147,7 +147,7 @@
             style="@style/Text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Test : Test" />
+            android:text="Test : " />
 
         <TextView
             android:id="@+id/testLabel2"
@@ -161,7 +161,7 @@
             style="@style/Text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Test : Test" />
+            android:text="Test : " />
 
         <TextView
             android:id="@+id/testLabel4"
@@ -175,7 +175,7 @@
             style="@style/Text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="49716 : Meppen" />
+            android:text="Postleitzahl" />
 
         <TextView
             android:id="@+id/testLabel6"

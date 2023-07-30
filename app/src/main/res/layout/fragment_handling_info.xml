@@ -31,23 +31,7 @@
         app:layout_constraintTop_toBottomOf="@+id/backToScannerFragmentButton">
 
         <CheckBox
-            android:id="@+id/chkOption"
-            style="@style/Text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="4dp"
-            android:text="Flüssig" />
-
-        <CheckBox
-            android:id="@+id/chkOption1"
-            style="@style/Text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="4dp"
-            android:text="Flüssig" />
-
-        <CheckBox
-            android:id="@+id/chkOption2"
+            android:id="@+id/fragileOption"
             style="@style/Text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -55,7 +39,7 @@
             android:text="Zerbrechlich" />
 
         <CheckBox
-            android:id="@+id/chkOption3"
+            android:id="@+id/glasOption"
             style="@style/Text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -63,7 +47,23 @@
             android:text="Glas" />
 
         <CheckBox
-            android:id="@+id/chkOption4"
+            android:id="@+id/fluentOption"
+            style="@style/Text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="4dp"
+            android:text="Flüssig" />
+
+        <CheckBox
+            android:id="@+id/heavyOption"
+            style="@style/Text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="4dp"
+            android:text="Schwer" />
+
+        <CheckBox
+            android:id="@+id/noOption"
             style="@style/Text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

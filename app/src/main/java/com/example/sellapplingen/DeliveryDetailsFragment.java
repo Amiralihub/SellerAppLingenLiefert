@@ -1,64 +1,71 @@
+// DeliveryDetailsFragment.java
 package com.example.sellapplingen;
-
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link DeliveryDetailsFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import androidx.fragment.app.Fragment;
+
 public class DeliveryDetailsFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private Order order;
 
     public DeliveryDetailsFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment DeliveryDetailsFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static DeliveryDetailsFragment newInstance(String param1, String param2) {
+    public static DeliveryDetailsFragment newInstance(Order order) {
         DeliveryDetailsFragment fragment = new DeliveryDetailsFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putSerializable("order", order);
         fragment.setArguments(args);
         return fragment;
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_delivery_details, container, false);
+        View view = inflater.inflate(R.layout.fragment_delivery_details, container, false);
+
+        // Hole das Order-Objekt aus den Fragment-Argumenten
+        Bundle args = getArguments();
+        if (args != null && args.containsKey("order")) {
+            order = (Order) args.getSerializable("order");
+        }
+
+        // Zeige die Order-Informationen in den entsprechenden TextViews an
+        if (order != null) {
+            TextView tokenValue = view.findViewById(R.id.tokenValue);
+            tokenValue.setText(order.getToken());
+
+            TextView timestampValue = view.findViewById(R.id.timestampValue);
+            timestampValue.setText(order.getTimestamp());
+
+            TextView employeeIdValue = view.findViewById(R.id.employeeIdValue);
+            employeeIdValue.setText(order.getEmployeeName());
+
+            TextView packageCountValue = view.findViewById(R.id.packageCountValue);
+            packageCountValue.setText(order.getNumberPackage());
+
+            TextView packageSizeValue = view.findViewById(R.id.packageSizeValue);
+            packageSizeValue.setText(order.getPackageSize());
+
+            TextView actionInfoValue = view.findViewById(R.id.actionInfoValue);
+            actionInfoValue.setText(order.getHandlingInfo());
+
+            TextView deliveryDateValue = view.findViewById(R.id.deliveryDateValue);
+            deliveryDateValue.setText(order.getDeliveryDate());
+
+            TextView deliveryAddressValue = view.findViewById(R.id.deliveryAddressValue);
+            String deliveryAddress = order.getStreet() + " " + order.getHouseNumber() + ", " +
+                    order.getZip() + " " + order.getCity();
+            deliveryAddressValue.setText(deliveryAddress);
+
+            // Weitere TextViews für andere Order-Informationen hinzufügen
+        }
+
+        return view;
     }
 }

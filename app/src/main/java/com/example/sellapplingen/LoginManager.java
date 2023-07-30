@@ -10,9 +10,9 @@ public class LoginManager {
     private static final String KEY_PASSWORD = "password";
 
     private static LoginManager instance;
-    private String validUsername;
-    private String validPassword;
-    private Context context;
+    private final String validUsername;
+    private final String validPassword;
+    private final Context context;
 
     // Privater Konstruktor, um die Instanz nur einmal zu erstellen
     private LoginManager(Context context) {

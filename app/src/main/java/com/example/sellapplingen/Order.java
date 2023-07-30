@@ -1,7 +1,8 @@
+// Order.java
 package com.example.sellapplingen;
+import java.io.Serializable;
 
-
-public class Order {
+public class Order implements Serializable {
     private String token;
     private String timestamp;
     private String employeeName;
@@ -16,14 +17,12 @@ public class Order {
     private String handlingInfo;
     private String deliveryDate;
 
-
     public Order() {
     }
 
-
     public Order(String token, String timestamp, String employeeName, String firstName, String lastName,
-                           String street, String houseNumber, String zip, String city, String numberPackage,
-                           String packageSize, String handlingInfo, String deliveryDate) {
+                 String street, String houseNumber, String zip, String city, String numberPackage,
+                 String packageSize, String handlingInfo, String deliveryDate) {
         this.token = token;
         this.timestamp = timestamp;
         this.employeeName = employeeName;
@@ -38,7 +37,6 @@ public class Order {
         this.handlingInfo = handlingInfo;
         this.deliveryDate = deliveryDate;
     }
-
 
     public String getToken() {
         return token;

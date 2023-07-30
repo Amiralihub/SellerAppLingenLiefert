@@ -8,20 +8,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-
 import com.journeyapps.barcodescanner.CaptureActivity;
+import com.example.sellapplingen.databinding.FragmentScannerBinding;
 
 public class ScannerFragment extends Fragment {
 
     private static final int CAMERA_PERMISSION_REQUEST_CODE = 100;
 
+    private FragmentScannerBinding binding;
     private ActivityResultLauncher<Intent> barLauncher;
 
     public ScannerFragment() {
@@ -30,20 +30,43 @@ public class ScannerFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_scanner, container, false);
+        binding = FragmentScannerBinding.inflate(inflater, container, false);
+        setupViews();
+        setupBarcodeScanner();
 
-        Button btnScan = view.findViewById(R.id.btnScan);
-        btnScan.setOnClickListener(v -> scanCode());
+        return binding.getRoot();
+    }
 
+    private void setupViews() {
+        binding.btnScan.setOnClickListener(v -> scanCode());
+    }
+
+    private void setupBarcodeScanner() {
         barLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
                 result -> {
                     if (result.getResultCode() == Activity.RESULT_OK && result.getData() != null) {
                         String contents = result.getData().getStringExtra("SCAN_RESULT");
                         showResultDialog(contents);
+                        // Speichere die gescannten Informationen in Order
+                        saveScanResultToOrder(contents);
                     }
                 });
+    }
 
-        return view;
+    private void saveScanResultToOrder(String scanResult) {
+        // Hier den Code zum Speichern der gescannten Informationen in der Order-Klasse einfügen
+        // Beispiel: Order.getInstance().setHandlingInfo(scanResult);
+        // In diesem Beispiel wird die statische Methode getInstance() der Order-Klasse aufgerufen,
+        // um eine Singleton-Instanz der Order-Klasse zu erhalten, und dann die setHandlingInfo-Methode
+        // aufgerufen, um das gescannte Ergebnis zu speichern.
+        // Stelle sicher, dass die Order-Klasse eine entsprechende setHandlingInfo-Methode hat.
+        // Du kannst die Informationen aus dem scanResult entsprechend aufteilen und in die
+        // entsprechenden Felder der Order-Klasse setzen.
+
+        // Anschließend, nachdem die Informationen in der Order-Klasse gespeichert wurden, rufe die
+        // Methode onScanSuccess() in der MainActivity auf, um zum HandlingInfoFragment zu wechseln.
+        MainActivity mainActivity = (MainActivity) requireActivity();
+        mainActivity.onScanSuccess();
     }
 
     private void scanCode() {
