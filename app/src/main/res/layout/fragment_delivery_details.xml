@@ -56,7 +56,6 @@
             style="@style/Text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="test"
             android:text=" " />
 
         <TextView
@@ -135,12 +134,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Lieferadresse :" />
-
-        <TextView
-            android:id="@+id/fuckyou"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
 
         <TextView
             android:id="@+id/deliveryAddressValue"
