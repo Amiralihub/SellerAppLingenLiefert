@@ -233,7 +233,7 @@
                 style="@style/Text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="49716 : Meppenss" />
+                android:text="49716 : Meppen" />
 
             <TextView
                 android:id="@+id/testLabel6"
