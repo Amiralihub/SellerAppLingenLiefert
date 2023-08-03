@@ -55,4 +55,14 @@ public class MainActivity extends AppCompatActivity {
         transaction.replace(R.id.frame_layout, new HandlingInfoFragment());
         transaction.commit();
     }
+
+    private Order currentOrder;
+
+    public Order getCurrentOrder() {
+        if (currentOrder == null) {
+            currentOrder = new Order();
+        }
+        return currentOrder;
+    }
+
 }

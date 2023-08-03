@@ -1,4 +1,3 @@
-// DeliveryDetailsFragment.java
 package com.example.sellapplingen;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -23,6 +22,12 @@ public class DeliveryDetailsFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
+    private Order createTestOrder() {
+        Order testOrder = new Order();
+        testOrder.setToken("Test-Token");
+        testOrder.setTimestamp("2023-08-03 12:34:56");
+        return testOrder;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -37,6 +42,7 @@ public class DeliveryDetailsFragment extends Fragment {
 
         // Zeige die Order-Informationen in den entsprechenden TextViews an
         if (order != null) {
+            createTestOrder();
             TextView tokenValue = view.findViewById(R.id.tokenValue);
             tokenValue.setText(order.getToken());
 
@@ -64,8 +70,13 @@ public class DeliveryDetailsFragment extends Fragment {
             deliveryAddressValue.setText(deliveryAddress);
 
             // Weitere TextViews für andere Order-Informationen hinzufügen
+            // Hier kannst du weitere TextViews hinzufügen, um andere Order-Informationen anzuzeigen
+            // Beispiel:
+            // TextView additionalInfoValue = view.findViewById(R.id.additionalInfoValue);
+            // additionalInfoValue.setText(order.getAdditionalInfo());
         }
 
         return view;
     }
+
 }

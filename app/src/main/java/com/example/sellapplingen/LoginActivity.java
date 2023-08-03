@@ -38,7 +38,7 @@ public class LoginActivity extends AppCompatActivity {
         String enteredUsername = usernameEditText.getText().toString();
         String enteredPassword = passwordEditText.getText().toString();
 
-        if (loginManager.isLoginValid(enteredUsername, enteredPassword)) {
+        if (!loginManager.isLoginValid(enteredUsername, enteredPassword)) {
             // Erfolgreich eingeloggt - hier kannst du die Hauptactivity starten oder andere Aktionen ausführen
             Toast.makeText(this, "Login erfolgreich!", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, MainActivity.class));

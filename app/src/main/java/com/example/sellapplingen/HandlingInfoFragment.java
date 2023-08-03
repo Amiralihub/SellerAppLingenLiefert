@@ -1,5 +1,7 @@
 package com.example.sellapplingen;
+
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +17,7 @@ public class HandlingInfoFragment extends Fragment {
     CheckBox chkOption1, chkOption2, chkOption3, chkOption4;
     Button confirmButton, backToScannerFragmentButton;
     private final StringBuilder selectedInfo = new StringBuilder();
-    private Order order; // Die Order-Instanz, in der die ausgewählten Informationen gespeichert werden
+    private Order order;
 
     public HandlingInfoFragment() {
         // Required empty public constructor
@@ -24,10 +26,11 @@ public class HandlingInfoFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.fragment_handling_info, container, false);
 
-        // Erstelle eine neue Order-Instanz
-        order = new Order();
+
+        order = ((MainActivity) requireActivity()).getCurrentOrder();
 
         chkOption1 = view.findViewById(R.id.fluentOption);
         chkOption2 = view.findViewById(R.id.fragileOption);
@@ -80,6 +83,8 @@ public class HandlingInfoFragment extends Fragment {
             showScannerFragment(); // Wechsle zurück zum ScannerFragment
         });
 
+
+
         return view;
     }
 
@@ -89,9 +94,15 @@ public class HandlingInfoFragment extends Fragment {
         transaction.commit();
     }
 
+
+    public void speichereOrderDaten() {
+        Log.d("Test", "Handling Info: " + order.getHandlingInfo());
+        // Hier könntest du auch Toast-Nachrichten verwenden, um die Werte anzuzeigen
+    }
+
     private void showHandlingInfo2() {
         FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frame_layout, new HandlingInfo2Fragment());
+        transaction.replace(R.id.frame_layout, new HandlingInfo3Fragment());
         transaction.commit();
     }
 
