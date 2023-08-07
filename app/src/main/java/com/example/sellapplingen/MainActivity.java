@@ -1,31 +1,53 @@
 package com.example.sellapplingen;
+
 import android.content.Intent;
 import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+
 import com.example.sellapplingen.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
-    private Fragment currentFragment;
+    private Order currentOrder;
+    private LoginManager loginManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Verwende den ApplicationContext für den LoginManager
+        loginManager = LoginManager.getInstance(getApplicationContext());
+
+        // Überprüfe, ob der Benutzer eingeloggt ist
+        if (!loginManager.isLoggedIn()) {
+            // Starte die LoginActivity, wenn der Benutzer nicht eingeloggt ist
+            startActivity(new Intent(this, LoginActivity.class));
+            finish(); // Beende die MainActivity, damit der Benutzer nicht zurückkehren kann
+            return; // Beende die Methode, um den restlichen Code in dieser Methode zu überspringen
+        }
+
+        // Setze das Layout und den Navigation Listener nur wenn der Benutzer eingeloggt ist
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         if (savedInstanceState == null) {
-            replaceFragment(new ScannerFragment());
+            // Erstelle ein neues Order-Objekt und speichere es in der MainActivity
+            Order order = new Order();
+            setCurrentOrder(order);
+
+            // Ersetze das Fragment durch das ScannerFragment und übergebe das Order-Objekt
+            replaceFragment(ScannerFragment.newInstance(order));
         }
 
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.action_scanner:
-                    replaceFragment(new ScannerFragment());
+                    replaceFragment(ScannerFragment.newInstance(getCurrentOrder()));
                     break;
                 case R.id.action_settings:
                     replaceFragment(new SettingFragment());
@@ -36,33 +58,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void replaceFragment(Fragment fragment) {
-        currentFragment = fragment;
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frame_layout, fragment);
         fragmentTransaction.commit();
     }
 
-    // Diese Methode wird aufgerufen, wenn der QR-Code erfolgreich gescannt wurde und die Informationen
-    // im Order-Objekt gespeichert wurden.
-    public void onScanSuccess() {
-        // Zeige das HandlingInfoFragment an
-        showHandlingInfoFragment();
+    public void setCurrentOrder(Order order) {
+        currentOrder = order;
     }
-
-    private void showHandlingInfoFragment() {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frame_layout, new HandlingInfoFragment());
-        transaction.commit();
-    }
-
-    private Order currentOrder;
 
     public Order getCurrentOrder() {
-        if (currentOrder == null) {
-            currentOrder = new Order();
-        }
         return currentOrder;
     }
-
 }

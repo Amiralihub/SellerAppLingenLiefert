@@ -17,6 +17,12 @@ public class Order implements Serializable {
     private String handlingInfo;
     private String deliveryDate;
 
+    public Order() {
+
+    }
+
+
+
 
     public Order(String token, String timestamp, String employeeName, String firstName, String lastName,
                  String street, String houseNumber, String zip, String city, String numberPackage,

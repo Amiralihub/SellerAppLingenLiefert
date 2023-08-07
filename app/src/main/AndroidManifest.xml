@@ -23,9 +23,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SellAppLingen"
         tools:targetApi="31" >
-        <activity
-            android:name=".TestActivity"
-            android:exported="false" />
+
         <!-- LoginActivity -->
         <activity
             android:name=".LoginActivity"

@@ -73,7 +73,7 @@ public class HandlingInfoFragment extends Fragment {
                 info = info.substring(0, info.length() - 2); // Entferne das letzte Trennzeichen ", "
                 order.setHandlingInfo(info); // Speichere die ausgewählten Informationen in handlingInfo der Order-Instanz
                 showToast(info);
-                showHandlingInfo2(); // Wechsle zum HandlingInfo2Fragment
+ // Wechsle zum HandlingInfo2Fragment
             } else {
                 showToast("No option was selected yet.");
             }
@@ -100,11 +100,7 @@ public class HandlingInfoFragment extends Fragment {
         // Hier könntest du auch Toast-Nachrichten verwenden, um die Werte anzuzeigen
     }
 
-    private void showHandlingInfo2() {
-        FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frame_layout, new HandlingInfo3Fragment());
-        transaction.commit();
-    }
+
 
     private void showToast(String message) {
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show();
