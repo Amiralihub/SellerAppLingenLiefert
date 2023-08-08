@@ -59,6 +59,19 @@ public class LoginManager {
         editor.apply();
     }
 
+    private void saveToken(String token) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("token", token);
+        editor.apply();
+        String savedToken = sharedPreferences.getString("token", null);
+        if (token.equals(savedToken)) {
+            Log.d("LoginManager", "Token was successfully saved: " + savedToken);
+        } else {
+            Log.e("LoginManager", "Failed to save the token");
+        }
+    }
+
     public boolean isLoggedIn() {
         SharedPreferences sharedPreferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         return sharedPreferences.contains("username") && sharedPreferences.contains("password");
@@ -113,8 +126,29 @@ public class LoginManager {
                     }
 
                     int responseCode = conn.getResponseCode();
-                    if (responseCode == 200) { // Überprüfe den Statuscode, 200 steht für OK
-                        onSuccess.run(); // Führe den Callback aus, wenn die Anmeldung erfolgreich ist
+                    if (responseCode == 200) {
+                        InputStream inputStream = conn.getInputStream();
+                        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+                        StringBuilder responseBuilder = new StringBuilder();
+                        String line;
+                        while ((line = reader.readLine()) != null) {
+                            responseBuilder.append(line);
+                        }
+                        // Schließe Streams
+                        reader.close();
+                        inputStream.close();
+
+                        // Konvertiere die Antwort in ein JSONObject
+                        String responseString = responseBuilder.toString();
+                        JSONObject responseJson = new JSONObject(responseString);
+
+                        // Hole den Token aus dem JSON-Objekt
+                        String token = responseJson.getString("token");
+                        saveToken(token);
+
+                        // Logge den Token
+                        Log.d("LoginManager", "Received token: " + token);
+                        onSuccess.run();
                     }
                     conn.disconnect();
 
