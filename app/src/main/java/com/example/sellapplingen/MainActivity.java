@@ -21,16 +21,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         // Verwende den ApplicationContext für den LoginManager
-        LoginManager loginManager = LoginManager.getInstance(getApplicationContext());
+        loginManager = LoginManager.getInstance(getApplicationContext());
 
         if (!loginManager.isLoggedIn()) {
             // Wenn der Benutzer nicht angemeldet ist, starte die LoginActivity
             Intent loginIntent = new Intent(this, LoginActivity.class);
             startActivity(loginIntent);
             finish();
+            return;
         }
-
-
 
         // Setze das Layout und den Navigation Listener nur wenn der Benutzer eingeloggt ist
         binding = ActivityMainBinding.inflate(getLayoutInflater());

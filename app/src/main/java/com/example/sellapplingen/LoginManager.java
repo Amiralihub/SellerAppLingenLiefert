@@ -51,17 +51,17 @@ public class LoginManager {
 
     //jsonwebtoken muss immer mit geschickt werden, z.b bei settings usw
 
-    public void saveLoginCredentials(String enteredUsername, String enteredPassword) {
+    public void saveLoginDetails(String username, String password) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(username, enteredUsername);
-        editor.putString(password, enteredPassword);
+        editor.putString("username", username);
+        editor.putString("password", password);
         editor.apply();
     }
 
     public boolean isLoggedIn() {
         SharedPreferences sharedPreferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
-        return sharedPreferences.contains(username) && sharedPreferences.contains(password);
+        return sharedPreferences.contains("username") && sharedPreferences.contains("password");
     }
 
 
@@ -69,7 +69,7 @@ public class LoginManager {
     // Beispiel-Implementierung für die Überprüfung der Login-Daten mit dem Server
 
 
-    public void sendPost() {
+    public void sendPost(Runnable onSuccess) {
         Log.d("LoginManager", "sendPost() Methode aufgerufen");
 
         if (username == null || password == null )  {
@@ -80,7 +80,7 @@ public class LoginManager {
             throw new IllegalArgumentException("Name or password is empty");
         }
 
-        Log.d("LoginManager", "Geht in Methdawdwdode");
+        Log.d("LoginManager", "Geht in Methode");
 
         Thread thread = new Thread(new Runnable() {
             @Override
@@ -108,6 +108,14 @@ public class LoginManager {
                     Log.i("STATUS", String.valueOf(conn.getResponseCode()));
                     Log.i("MSG", conn.getResponseMessage());
 
+                    if (conn.getResponseCode() == HttpURLConnection.HTTP_OK) {
+                        saveLoginDetails(username, password);
+                    }
+
+                    int responseCode = conn.getResponseCode();
+                    if (responseCode == 200) { // Überprüfe den Statuscode, 200 steht für OK
+                        onSuccess.run(); // Führe den Callback aus, wenn die Anmeldung erfolgreich ist
+                    }
                     conn.disconnect();
 
 

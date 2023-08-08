@@ -7,6 +7,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -16,6 +19,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button loginButton;
 
     private LoginManager loginManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,17 +36,17 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(v -> login());
     }
 
-
-
-
     private void login() {
         String enteredUsername = usernameEditText.getText().toString();
         String enteredPassword = passwordEditText.getText().toString();
-        loginManager = new LoginManager(enteredUsername, enteredPassword);
+
+        loginManager.username = enteredUsername; // Setze die Benutzernamen und Passwort
+        loginManager.password = enteredPassword;
 
         try {
             // Sende die Benutzerdaten an den Server
-            loginManager.sendPost();
+            loginManager.sendPost(this::goToScannerFragment);
+
         } catch (NullPointerException e) {
             // Handle NullPointerException
             Toast.makeText(this, "Name or password is null", Toast.LENGTH_SHORT).show();
@@ -52,6 +56,12 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(this, "Name or password is empty", Toast.LENGTH_SHORT).show();
             return;
         }
-
     }
+
+    private void goToScannerFragment() {
+        Intent mainIntent = new Intent(this, MainActivity.class);
+        startActivity(mainIntent);
+        finish(); // Schließt die LoginActivity, damit der Benutzer nicht dorthin zurückkehren kann
+    }
+
 }
