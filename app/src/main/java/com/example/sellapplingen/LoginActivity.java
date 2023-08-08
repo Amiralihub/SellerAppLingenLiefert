@@ -10,8 +10,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private EditText usernameEditText;
-    private EditText passwordEditText;
+    private EditText usernameEditText = findViewById(R.id.editTextUsername);
+
+    private EditText passwordEditText = findViewById(R.id.editTextPassword);
+    private Button loginButton = findViewById(R.id.buttonLogin);
 
     private LoginManager loginManager;
 
@@ -23,10 +25,6 @@ public class LoginActivity extends AppCompatActivity {
         // Verwende den ApplicationContext für den LoginManager
         loginManager = LoginManager.getInstance(getApplicationContext());
 
-        usernameEditText = findViewById(R.id.editTextUsername);
-        passwordEditText = findViewById(R.id.editTextPassword);
-        Button loginButton = findViewById(R.id.buttonLogin);
-
         loginButton.setOnClickListener(v -> login());
     }
 
@@ -36,6 +34,7 @@ public class LoginActivity extends AppCompatActivity {
     private void login() {
         String enteredUsername = usernameEditText.getText().toString();
         String enteredPassword = passwordEditText.getText().toString();
+        loginManager = new LoginManager(enteredUsername, enteredPassword);
 
         try {
             // Sende die Benutzerdaten an den Server
@@ -51,19 +50,6 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         // Überprüfe die Login-Daten mit dem LoginManager
-        if (loginManager.isLoginValid(enteredUsername, enteredPassword)) {
-            // Erfolgreich eingeloggt - hier kannst du die Hauptactivity starten oder andere Aktionen ausführen
-            Toast.makeText(this, "Login erfolgreich!", Toast.LENGTH_SHORT).show();
 
-            // Speichere die Login-Daten im LoginManager
-            loginManager.saveLoginCredentials(enteredUsername, enteredPassword);
-
-            // Starte die MainActivity
-            startActivity(new Intent(this, MainActivity.class));
-            finish(); // Beende die LoginActivity
-        } else {
-            // Falsche Anmeldedaten
-            Toast.makeText(this, "Ungültiger Benutzername oder Passwort.", Toast.LENGTH_SHORT).show();
-        }
     }
 }
