@@ -21,70 +21,82 @@
             app:layout_constraintBottom_toBottomOf="parent" />
 
         <Button
-            android:id="@+id/editAddressButton"
+            android:id="@+id/editStoreName"
             style="@style/Text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:backgroundTint="@color/lavender"
-            android:text="Adresse bearbeiten"
+            android:text="edit Store Name"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/editTimesButton"
+            android:id="@+id/editPassword"
             style="@style/Text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:backgroundTint="@color/lavender"
-            android:text="Öffnungszeiten bearbeiten"
+            android:text="edit Password"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/editPhoneNumberButton"
+            android:id="@+id/editOwner"
             style="@style/Text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:backgroundTint="@color/lavender"
-            android:text="Telefonnummer bearbeiten"
+            android:text="edit Owner"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/editEmailButton"
+            android:id="@+id/editStreet"
             style="@style/Text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:backgroundTint="@color/lavender"
-            android:text="Geschäfts-E-mail bearbeiten"
+            android:text="edit Street"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/editManagerButton"
+            android:id="@+id/editHouseNumber"
             style="@style/Text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:backgroundTint="@color/lavender"
-            android:text="Verantwortliche fürs Geschäft bearbeiten"
+            android:text="edit House Number"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/signoutButton"
+            android:id="@+id/editZip"
             style="@style/Text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:backgroundTint="@color/lavender"
-            android:text="Abmelden"
+            android:text="edit Zip"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/editTelephone"
+            android:layout_width="134dp"
+            android:layout_height="wrap_content"
+            android:text="edit Telephone" />
+
+        <Button
+            android:id="@+id/editEmail"
+            android:layout_width="143dp"
+            android:layout_height="wrap_content"
+            android:text="edit Email" />
 
         <TextView
             style="@style/Text"
@@ -123,6 +135,12 @@
                 tools:ignore="UseSwitchCompatOrMaterialXml" />
 
         </LinearLayout>
+
+        <Button
+            android:id="@+id/abmelden"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Abmelden" />
 
     </LinearLayout>
 
