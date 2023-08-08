@@ -30,6 +30,9 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(v -> login());
     }
 
+
+
+
     private void login() {
         String enteredUsername = usernameEditText.getText().toString();
         String enteredPassword = passwordEditText.getText().toString();
