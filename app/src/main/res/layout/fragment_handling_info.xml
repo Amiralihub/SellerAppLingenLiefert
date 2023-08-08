@@ -1,87 +1,205 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    style="@style/Screen"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    tools:context=".HandlingInfoFragment">
-
-    <Button
-        android:id="@+id/backToScannerFragmentButton"
-        style="@style/Text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="@color/lavender"
-        android:drawableLeft="@drawable/baseline_arrow_back_24"
-        android:text="QR-Code Scanner"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    android:padding="16dp">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_margin="8dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/confirmButton"
-        app:layout_constraintTop_toBottomOf="@+id/backToScannerFragmentButton">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <CheckBox
-            android:id="@+id/fragileOption"
-            style="@style/Text"
+        <!-- Empfängerdaten -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="4dp"
-            android:text="Zerbrechlich" />
+            android:background="#DDDDDD"
+            android:orientation="horizontal"
+            android:padding="8dp">
 
-        <CheckBox
-            android:id="@+id/glasOption"
-            style="@style/Text"
+            <TextView
+                android:id="@+id/tokenLabel"
+                style="@style/Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Empfängerdaten :" />
+
+            <TextView
+                android:id="@+id/tokenValue"
+                style="@style/Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:background="#AAAAAA" />
+
+        <!-- Paket Größe -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="4dp"
-            android:text="Glas" />
+            android:background="#DDDDDD"
+            android:orientation="vertical"
+            android:padding="8dp">
 
-        <CheckBox
-            android:id="@+id/fluentOption"
-            style="@style/Text"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Paket Größe auswählen"
+                android:textStyle="bold" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="S" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="M" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="L" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="XL" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:background="#AAAAAA" />
+
+        <!-- Handling Info -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="4dp"
-            android:text="Flüssig" />
+            android:background="#DDDDDD"
+            android:orientation="vertical"
+            android:padding="8dp">
 
-        <CheckBox
-            android:id="@+id/heavyOption"
-            style="@style/Text"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Handling Info"
+                android:textStyle="bold" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Zerbrechlich" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Glas" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Flüssigkeiten" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Schwer" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:background="#AAAAAA" />
+
+        <!-- Lieferdatum wählen -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="4dp"
-            android:text="Schwer" />
+            android:background="#DDDDDD"
+            android:orientation="vertical"
+            android:padding="8dp">
 
-        <CheckBox
-            android:id="@+id/noOption"
-            style="@style/Text"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lieferdatum wählen"
+                android:textStyle="bold" />
+
+            <CalendarView
+                android:id="@+id/calendarView"
+                style="@style/Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:background="#AAAAAA" />
+
+        <!-- Mitarbeiter Kürzel -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="4dp"
-            android:text="Keine besondere Eigenschaft" />
+            android:background="#DDDDDD"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mitarbeiter Kürzel"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/recipientNameEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Name eingeben"
+                android:inputType="textPersonName" />
+
+            <!-- Hier eine TextView oder EditText für das Mitarbeiter Kürzel hinzufügen -->
+            <!-- Beispiel: <TextView ... /> oder <EditText ... /> -->
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:background="#AAAAAA" />
+
+        <!-- Bestätigungsbutton -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/confirmButton"
+                style="@style/Text"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_width="170dp"
+                android:layout_height="75dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="270dp"
+                android:backgroundTint="@color/lavender"
+                android:drawableLeft="@drawable/baseline_check_24"
+                android:text="Bestätigen" />
+
+            <!-- Optional: Weitere Buttons oder Elemente hier hinzufügen -->
+        </LinearLayout>
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/confirmButton"
-        style="@style/Text"
-        android:layout_width="170dp"
-        android:layout_height="75dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="270dp"
-        android:backgroundTint="@color/lavender"
-        android:drawableLeft="@drawable/baseline_check_24"
-        android:text="Bestätigen"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
