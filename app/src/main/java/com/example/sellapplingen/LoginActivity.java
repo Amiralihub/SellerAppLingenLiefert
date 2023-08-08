@@ -10,10 +10,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private EditText usernameEditText = findViewById(R.id.editTextUsername);
+    private EditText usernameEditText;
 
-    private EditText passwordEditText = findViewById(R.id.editTextPassword);
-    private Button loginButton = findViewById(R.id.buttonLogin);
+    private EditText passwordEditText;
+    private Button loginButton;
 
     private LoginManager loginManager;
 
@@ -21,6 +21,10 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        usernameEditText = findViewById(R.id.editTextUsername);
+        passwordEditText = findViewById(R.id.editTextPassword);
+        loginButton = findViewById(R.id.buttonLogin);
+
 
         // Verwende den ApplicationContext für den LoginManager
         loginManager = LoginManager.getInstance(getApplicationContext());
@@ -48,8 +52,6 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(this, "Name or password is empty", Toast.LENGTH_SHORT).show();
             return;
         }
-
-        // Überprüfe die Login-Daten mit dem LoginManager
 
     }
 }

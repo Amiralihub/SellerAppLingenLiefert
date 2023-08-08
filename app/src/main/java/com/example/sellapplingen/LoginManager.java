@@ -59,6 +59,12 @@ public class LoginManager {
         editor.apply();
     }
 
+    public boolean isLoggedIn() {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        return sharedPreferences.contains(username) && sharedPreferences.contains(password);
+    }
+
+
 
     // Beispiel-Implementierung für die Überprüfung der Login-Daten mit dem Server
 
@@ -103,6 +109,8 @@ public class LoginManager {
                     Log.i("MSG", conn.getResponseMessage());
 
                     conn.disconnect();
+
+
                 } catch (IOException e) {
                     e.printStackTrace();
                 } catch (JSONException e) {
