@@ -120,8 +120,7 @@ public class SettingFragment extends Fragment {
                     int responseCode = conn.getResponseCode();
                     String responseMessage = conn.getResponseMessage();
 
-                    // Hier können Sie je nach responseCode und responseMessage entsprechend reagieren
-                    // Zum Beispiel Toasts oder Logs anzeigen
+
 
                     conn.disconnect();
                 } catch (IOException | JSONException e) {
