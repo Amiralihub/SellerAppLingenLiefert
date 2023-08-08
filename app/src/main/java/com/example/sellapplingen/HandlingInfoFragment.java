@@ -14,7 +14,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 public class HandlingInfoFragment extends Fragment {
 
-    CheckBox chkOption1, chkOption2, chkOption3, chkOption4;
+    CheckBox chkOption1, chkOption2, chkOption3, chkOption4, chkOption5;
     Button confirmButton, backToScannerFragmentButton;
     private final StringBuilder selectedInfo = new StringBuilder();
     private Order order;
@@ -36,8 +36,9 @@ public class HandlingInfoFragment extends Fragment {
         chkOption2 = view.findViewById(R.id.fragileOption);
         chkOption3 = view.findViewById(R.id.glasOption);
         chkOption4 = view.findViewById(R.id.noOption); // Assuming you have this checkbox in your layout
+        chkOption5 = view.findViewById(R.id.heavy);
         confirmButton = view.findViewById(R.id.confirmButton);
-        backToScannerFragmentButton = view.findViewById(R.id.backToScannerFragmentButton);
+        //backToScannerFragmentButton = view.findViewById(R.id.backToScannerFragmentButton);
 
         chkOption1.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {

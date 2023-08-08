@@ -95,24 +95,34 @@
                 android:textStyle="bold" />
 
             <CheckBox
+                android:id="@+id/fragileOption"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Zerbrechlich" />
 
             <CheckBox
+                android:id="@+id/glasOption"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Glas" />
 
             <CheckBox
+                android:id="@+id/fluentOption"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Flüssigkeiten" />
 
             <CheckBox
+                android:id="@+id/heavy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Schwer" />
+
+            <CheckBox
+                android:id="@+id/noOption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Keine besondere Eigenschaft" />
 
         </LinearLayout>
 
