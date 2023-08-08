@@ -24,12 +24,12 @@ public class MainActivity extends AppCompatActivity {
         loginManager = LoginManager.getInstance(getApplicationContext());
 
         // Überprüfe, ob der Benutzer eingeloggt ist
-        if (!loginManager.isLoggedIn()) {
+        /*if (loginManager.isLoggedIn()) {
             // Starte die LoginActivity, wenn der Benutzer nicht eingeloggt ist
             startActivity(new Intent(this, LoginActivity.class));
             finish(); // Beende die MainActivity, damit der Benutzer nicht zurückkehren kann
             return; // Beende die Methode, um den restlichen Code in dieser Methode zu überspringen
-        }
+        }*/
 
         // Setze das Layout und den Navigation Listener nur wenn der Benutzer eingeloggt ist
         binding = ActivityMainBinding.inflate(getLayoutInflater());
