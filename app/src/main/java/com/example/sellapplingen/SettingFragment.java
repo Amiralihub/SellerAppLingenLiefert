@@ -45,7 +45,7 @@ public class SettingFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_setting, container, false);
 
-        editStoreName = view.findViewById(R.id.editStoreName);
+        /*editStoreName = view.findViewById(R.id.editStoreName);
         editPassword = view.findViewById(R.id.editPassword);
         editOwner = view.findViewById(R.id.editOwner);
         editStreet = view.findViewById(R.id.editStreet);
@@ -55,10 +55,10 @@ public class SettingFragment extends Fragment {
         editEmail = view.findViewById(R.id.editEmail);
 
 
-        btnSubmit.setOnClickListener(v -> sendDataToServer());
+        btnSubmit.setOnClickListener(v -> sendDataToServer());*/
 
         darkModeSwitch = view.findViewById(R.id.darkModeSwitch);
-        sharedPreferences = Objects.requireNonNull(getActivity()).getSharedPreferences("MODE", Context.MODE_PRIVATE);
+        sharedPreferences = requireActivity().getSharedPreferences("MODE", Context.MODE_PRIVATE);
         nightMode = sharedPreferences.getBoolean("night", false);
         if (nightMode) {
             darkModeSwitch.setChecked(true);
@@ -95,7 +95,7 @@ public class SettingFragment extends Fragment {
             @Override
             public void run() {
                 try {
-                    URL url = new URL("http://131.173.65.77:3000/test-user");
+                    URL url = new URL("http://131.173.65.77:3000/....");
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                     conn.setRequestMethod("POST");
                     conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
