@@ -56,9 +56,16 @@
 
 
     <Button
-        android:id="@+id/btnSubmit"
+        android:id="@+id/updateData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Endgültig spreichern" />
+        android:text="Daten Anfordern" />
+
+    <Button
+        android:id="@+id/saveData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Daten Speichern" />
+
 
 </LinearLayout>
