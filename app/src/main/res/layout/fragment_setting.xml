@@ -1,71 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp">
 
-        <EditText
-            android:id="@+id/editStoreName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Store Name bearbeiten" />
-
-        <EditText
-            android:id="@+id/editOwner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Owner Name bearbeiten" />
-
-        <EditText
-            android:id="@+id/editStreet"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Street bearbeiten" />
-
-        <EditText
-            android:id="@+id/editHouseNumber"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="House Number bearbeiten" />
-
-        <EditText
-            android:id="@+id/editZip"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="ZIP Code bearbeiten" />
-
-        <EditText
-            android:id="@+id/editTelephone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Telephone bearbeiten" />
-
-        <EditText
-            android:id="@+id/editEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Email bearbeiten" />
-
-
-    <Switch
-        android:id="@+id/darkModeSwitch"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/editStoreName"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Dark Mode" />
+        android:hint="Store Name"/>
 
+    <EditText
+        android:id="@+id/editOwner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Owner"/>
+
+    <EditText
+        android:id="@+id/editStreet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Street"/>
+
+    <EditText
+        android:id="@+id/editHouseNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="House Number"/>
+
+    <EditText
+        android:id="@+id/editZip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Zip"/>
+
+    <EditText
+        android:id="@+id/editTelephone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Telephone"/>
+
+    <EditText
+        android:id="@+id/editEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email"/>
 
     <Button
         android:id="@+id/updateData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Daten Anfordern" />
+        android:text="Daten Anfordern"/>
 
     <Button
         android:id="@+id/saveData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Daten Speichern" />
-
+        android:text="Daten Speichern"/>
 
 </LinearLayout>

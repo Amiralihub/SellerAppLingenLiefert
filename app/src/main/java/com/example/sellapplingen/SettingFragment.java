@@ -1,4 +1,5 @@
 package com.example.sellapplingen;
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -12,7 +13,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
 import androidx.fragment.app.Fragment;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -31,6 +31,7 @@ public class SettingFragment extends Fragment {
     private Button saveData;
     private String token;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_setting, container, false);
@@ -241,4 +242,3 @@ public class SettingFragment extends Fragment {
         });
     }
 }
-
