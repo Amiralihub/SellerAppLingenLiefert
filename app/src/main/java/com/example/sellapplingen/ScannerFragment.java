@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.journeyapps.barcodescanner.CaptureActivity;
 import com.example.sellapplingen.databinding.FragmentScannerBinding;
@@ -57,15 +60,14 @@ public class ScannerFragment extends Fragment {
     }
 
     private void setupBarcodeScanner() {
-        barLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
-                result -> {
-                    if (result.getResultCode() == Activity.RESULT_OK && result.getData() != null) {
-                        String contents = result.getData().getStringExtra("SCAN_RESULT");
-                        showResultDialog(contents);
-                        // Speichere die gescannten Informationen in Order
-                        saveScanResultToOrder(contents);
-                    }
-                });
+        barLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+            if (result.getResultCode() == Activity.RESULT_OK && result.getData() != null) {
+                String contents = result.getData().getStringExtra("SCAN_RESULT");
+                showResultDialog(contents);
+                // Speichere die gescannten Informationen in Order
+                saveScanResultToOrder(contents);
+            }
+        });
     }
 
     private void saveScanResultToOrder(String scanResult) {
@@ -84,8 +86,7 @@ public class ScannerFragment extends Fragment {
     }
 
     private void scanCode() {
-        if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA)
-                == PackageManager.PERMISSION_GRANTED) {
+        if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
             // Wenn die Kameraerlaubnis erteilt wurde, starte den QR-Code-Scanner
             Intent intent = new Intent(requireContext(), CaptureActivity.class);
             barLauncher.launch(intent);
@@ -98,13 +99,7 @@ public class ScannerFragment extends Fragment {
     private void requestCameraPermission() {
         if (ActivityCompat.shouldShowRequestPermissionRationale(requireActivity(), Manifest.permission.CAMERA)) {
             // Zeige eine Erklärung, warum die Kameraerlaubnis benötigt wird
-            new AlertDialog.Builder(requireContext())
-                    .setTitle("Kameraerlaubnis erforderlich")
-                    .setMessage("Die Kameraerlaubnis wird benötigt, um den QR-Code zu scannen.")
-                    .setPositiveButton("OK", (dialog, which) -> requestPermission())
-                    .setNegativeButton("Abbrechen", (dialog, which) -> dialog.dismiss())
-                    .create()
-                    .show();
+            new AlertDialog.Builder(requireContext()).setTitle("Kameraerlaubnis erforderlich").setMessage("Die Kameraerlaubnis wird benötigt, um den QR-Code zu scannen.").setPositiveButton("OK", (dialog, which) -> requestPermission()).setNegativeButton("Abbrechen", (dialog, which) -> dialog.dismiss()).create().show();
         } else {
             // Frage den Benutzer nach der Kameraerlaubnis
             requestPermission();
@@ -112,8 +107,7 @@ public class ScannerFragment extends Fragment {
     }
 
     private void requestPermission() {
-        ActivityCompat.requestPermissions(requireActivity(), new String[]{Manifest.permission.CAMERA},
-                CAMERA_PERMISSION_REQUEST_CODE);
+        ActivityCompat.requestPermissions(requireActivity(), new String[]{Manifest.permission.CAMERA}, CAMERA_PERMISSION_REQUEST_CODE);
     }
 
     @Override
@@ -132,11 +126,35 @@ public class ScannerFragment extends Fragment {
     }
 
     private void showResultDialog(String contents) {
-        new AlertDialog.Builder(requireContext())
-                .setTitle("Scan-Ergebnis")
-                .setMessage(contents)
-                .setPositiveButton("OK", (dialog, which) -> dialog.dismiss())
-                .create()
-                .show();
+        new AlertDialog.Builder(requireContext()).setTitle("Scan-Ergebnis").setMessage(contents).setPositiveButton("OK", (dialog, which) -> dialog.dismiss()).create().show();
+        String[] res = contents.split("&");
+        Order order = new Order();
+        order.setLastName(res[0]);
+        order.setFirstName(res[1]);
+        order.setStreet(res[2]);
+        order.setHouseNumber(res[3]);
+        order.setZip(res[4]);
+        order.setCity(res[5]);
+/*        HandlingInfoFragment fragment = new HandlingInfoFragment();
+        Bundle args = new Bundle();
+        args.putSerializable("order", order);
+        fragment.setArguments(args);*/
+  /*      FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.frame_layout, fragment);
+        transaction.commit();
+*/
+
+
+        Bundle args = new Bundle();
+        args.putSerializable("order", order);
+        HandlingInfoFragment toFragment = new HandlingInfoFragment();
+        toFragment.setArguments(args);
+        getFragmentManager()
+                .beginTransaction()
+                .replace(R.id.frame_layout, toFragment, "tariq").commit();
+
+
+        Log.i("tariq", "showResultDialog: " + res[0]+"\n"+res[2]+"\n"+res[3]+"\n"+res[4]+"\n"+res[5]);
     }
 }
