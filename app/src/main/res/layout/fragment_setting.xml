@@ -1,149 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    style="@style/Screen"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:padding="16dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <TextView
-            style="@style/Text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="Geschäftsinformationen_Bearbeiten"
-            app:layout_constraintBottom_toBottomOf="parent" />
-
-        <Button
+        <EditText
             android:id="@+id/editStoreName"
-            style="@style/Text"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:backgroundTint="@color/lavender"
-            android:text="edit Store Name"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:hint="Store Name bearbeiten" />
 
-        <Button
-            android:id="@+id/editPassword"
-            style="@style/Text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:backgroundTint="@color/lavender"
-            android:text="edit Password"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
+        <EditText
             android:id="@+id/editOwner"
-            style="@style/Text"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:backgroundTint="@color/lavender"
-            android:text="edit Owner"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:hint="Owner Name bearbeiten" />
 
-        <Button
+        <EditText
             android:id="@+id/editStreet"
-            style="@style/Text"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:backgroundTint="@color/lavender"
-            android:text="edit Street"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:hint="Street bearbeiten" />
 
-        <Button
+        <EditText
             android:id="@+id/editHouseNumber"
-            style="@style/Text"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:backgroundTint="@color/lavender"
-            android:text="edit House Number"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:hint="House Number bearbeiten" />
 
-        <Button
+        <EditText
             android:id="@+id/editZip"
-            style="@style/Text"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:backgroundTint="@color/lavender"
-            android:text="edit Zip"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:hint="ZIP Code bearbeiten" />
 
-        <Button
-            style="@style/Text"
+        <EditText
             android:id="@+id/editTelephone"
-            android:layout_width="134dp"
-            android:backgroundTint="@color/lavender"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="edit Telephone" />
+            android:hint="Telephone bearbeiten" />
 
-        <Button
+        <EditText
             android:id="@+id/editEmail"
-            android:layout_width="143dp"
-            android:layout_height="wrap_content"
-            android:text="edit Email" />
-
-        <TextView
-            style="@style/Text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Einstellungen:" />
-
-        <View
-            style="@style/View"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp" />
-
-        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:hint="Email bearbeiten" />
 
-            <TextView
-                android:id="@+id/darkModeText"
-                style="@style/Text"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center_vertical"
-                android:text="Dark Mode"
-                tools:ignore="Suspicious0dp" />
 
-            <Switch
-                android:id="@+id/darkModeSwitch"
-                style="@style/Text"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:gravity="center"
-                tools:ignore="UseSwitchCompatOrMaterialXml" />
+    <Switch
+        android:id="@+id/darkModeSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dark Mode" />
 
-        </LinearLayout>
 
-        <Button
-            android:id="@+id/abmelden"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Abmelden" />
+    <Button
+        android:id="@+id/btnSubmit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Endgültig spreichern" />
 
-    </LinearLayout>
-
-</ScrollView>
+</LinearLayout>
