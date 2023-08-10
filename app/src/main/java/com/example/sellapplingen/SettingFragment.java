@@ -1,7 +1,10 @@
 package com.example.sellapplingen;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +12,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import androidx.fragment.app.Fragment;
+
+import com.example.sellapplingen.R;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.io.BufferedReader;
@@ -46,7 +52,12 @@ public class SettingFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 sendDataToServer();
-                getSettings();  // Rufe die Methode zum Abrufen der Einstellungen vom Server auf
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        getSettings();  // Rufe die Methode zum Abrufen der Einstellungen vom Server auf
+                    }
+                }).start();
             }
         });
 
@@ -61,21 +72,26 @@ public class SettingFragment extends Fragment {
         final String zip = editZip.getText().toString();
         final String telephone = editTelephone.getText().toString();
         final String email = editEmail.getText().toString();
+
+        // Hier kannst du den Code für das Senden der Daten zum Server einfügen
     }
+
     private String getSavedToken() {
         SharedPreferences sharedPreferences = requireActivity().getSharedPreferences(LoginManager.PREF_NAME, Context.MODE_PRIVATE);
         return sharedPreferences.getString("token", null);
     }
+
+
+
     private void getSettings() {
+        String testToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdG9yZUlEIjozLCJzdG9yZU5hbWUiOiJUd2l0dGVyIiwib3duZXIiOiJFbG9uX3N1Y2tzIiwibG9nbyI6ImVsb24iLCJ0ZWxlcGhvbmUiOiIwOTg3NjQzMjEiLCJlbWFpbCI6InNkZnNkLnNkZnNkQHR3aXR0ZXIuY29tIiwiaWF0IjoxNjkxNjc1NjA5LCJzdWIiOiJhdXRoX3Rva2VuIn0._c2pnpuPlGCFE6ah5uosnhabaCQdRKCuoH13GSS4fRM";
         if (getSavedToken() == null) {
             Log.d("Settings", "Kein Token");
             return;
         }
-
         try {
             JSONObject jsonParam = new JSONObject();
-
-            jsonParam.put("token", getSavedToken());
+            jsonParam.put("token", testToken);
 
             URL url = new URL("http://131.173.65.77:8080/api/getSettings");
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -101,26 +117,35 @@ public class SettingFragment extends Fragment {
                 }
                 reader.close();
 
-                JSONObject jsonResponse = new JSONObject(response.toString());
+                final JSONObject jsonResponse = new JSONObject(response.toString());
 
-                String storeName = jsonResponse.getString("storeName");
-                String owner = jsonResponse.getString("owner");
-                String street = jsonResponse.getString("street");
-                String houseNumber = jsonResponse.getString("houseNumber");
-                String zip = jsonResponse.getString("zip");
-                String telephone = jsonResponse.getString("telephone");
-                String email = jsonResponse.getString("email");
+                // Verarbeite die Antwort und setze die Daten in die EditText-Felder im UI-Thread
+                new Handler(Looper.getMainLooper()).post(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            String storeName = jsonResponse.getString("storeName");
+                            String owner = jsonResponse.getString("owner");
+                            String street = jsonResponse.getString("street");
+                            String houseNumber = jsonResponse.getString("houseNumber");
+                            //Integer zip = jsonResponse.getInt("zip");
+                            String telephone = jsonResponse.getString("telephone");
+                            String email = jsonResponse.getString("email");
 
-                // Set the retrieved values to the EditText fields
-                editStoreName.setText(storeName);
-                editOwner.setText(owner);
-                editStreet.setText(street);
-                editHouseNumber.setText(houseNumber);
-                editZip.setText(zip);
-                editTelephone.setText(telephone);
-                editEmail.setText(email);
+                            editStoreName.setText(storeName);
+                            editOwner.setText(owner);
+                            editStreet.setText(street);
+                            editHouseNumber.setText(houseNumber);
+                            //editZip.setText(zip);
+                            editTelephone.setText(telephone);
+                            editEmail.setText(email);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+
             } else {
-                // Handle errors
                 Log.d("Settings", "Fehler beim Empfangen der Einstellungen. Statuscode: " + responseCode);
             }
 
@@ -131,56 +156,6 @@ public class SettingFragment extends Fragment {
     }
 
     public void setSettings() {
-        try {
-            String storeName = editStoreName.getText().toString();
-            String owner = editOwner.getText().toString();
-            String street = editStreet.getText().toString();
-            String houseNumber = editHouseNumber.getText().toString();
-            String zip = editZip.getText().toString();
-            String telephone = editTelephone.getText().toString();
-            String email = editEmail.getText().toString();
-
-            JSONObject jsonParam = new JSONObject();
-            jsonParam.put("storeName", storeName);
-            jsonParam.put("owner", owner);
-            jsonParam.put("street", street);
-            jsonParam.put("houseNumber", houseNumber);
-            jsonParam.put("zip", zip);
-            jsonParam.put("telephone", telephone);
-            jsonParam.put("email", email);
-
-            URL url = new URL("http://131.173.65.77:8080/api/setSettings");
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setRequestMethod("POST");
-            conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
-            conn.setRequestProperty("Accept", "application/json");
-            conn.setDoOutput(true);
-
-            if (token != null) {
-                conn.setRequestProperty("Authorization", "Bearer " + token);
-            }
-
-            DataOutputStream os = new DataOutputStream(conn.getOutputStream());
-            os.writeBytes(jsonParam.toString());
-            os.flush();
-            os.close();
-
-            int responseCode = conn.getResponseCode();
-
-            if (responseCode == 200) {
-                // Erfolgreiche Verarbeitung der Einstellungen auf dem Server
-                Log.d("Settings", "Einstellungen erfolgreich aktualisiert");
-            } else {
-                // Fehlerbehandlung
-                Log.d("Settings", "Fehler beim Aktualisieren der Einstellungen. Statuscode: " + responseCode);
-            }
-
-            conn.disconnect();
-        } catch (IOException | JSONException e) {
-            e.printStackTrace();
-        }
+        // Hier der Code zum Aktualisieren der Einstellungen auf dem Server
     }
-
-
-
 }
