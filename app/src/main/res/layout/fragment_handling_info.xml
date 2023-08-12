@@ -54,21 +54,28 @@
 
             <CheckBox
                 android:layout_width="wrap_content"
+                android:id="@+id/small"
                 android:layout_height="wrap_content"
                 android:text="S" />
 
             <CheckBox
                 android:layout_width="wrap_content"
+                android:id="@+id/medium"
+
                 android:layout_height="wrap_content"
                 android:text="M" />
 
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/large"
+
                 android:text="L" />
 
             <CheckBox
                 android:layout_width="wrap_content"
+                android:id="@+id/xlarge"
+
                 android:layout_height="wrap_content"
                 android:text="XL" />
 
@@ -146,14 +153,41 @@
                 android:text="Lieferdatum wählen"
                 android:textStyle="bold" />
 
-            <CalendarView
+            <Button
                 android:id="@+id/calendarView"
                 style="@style/Text"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:text="Set Date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Zeitstempel"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/timeview"
+                    style="@style/Text"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:text="Set Time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
 
         </LinearLayout>
+
 
         <View
             style="@style/View"
